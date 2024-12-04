@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Listening Stats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f4e4;
+            border-left: 5px solid #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spotify Listening Stats</h1>
+        <p>Enter the total minutes you've listened to Spotify this year to see your listening stats!</p>
+        <label for="minutes">Your Minutes:</label>
+        <input type="number" id="minutes" placeholder="Enter your minutes..." />
+        <button onclick="calculateStats()">Submit</button>
+
+        <div id="output" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        function calculateStats() {
+            const minutes = parseInt(document.getElementById('minutes').value);
+            if (isNaN(minutes) || minutes < 0) {
+                alert('Please enter a valid number of minutes!');
+                return;
+            }
+
+            let range = minutes;
+            let avg = Math.floor(minutes / 365);
+            let hours = Math.floor(minutes / 60);
+            let days = Math.floor(hours / 24);
+            hours %= 24;
+
+            let type = '';
+            if (range > 50000) {
+                type = "an Avid listener and you average ";
+            } else if (range > 20000) {
+                type = "a Music lover and you average ";
+            } else if (range > 5000) {
+                type = "a Casual listener and you average ";
+            } else {
+                type = "a Rare listener and you average ";
+            }
+
+            let result = `This year, you listened to music for `;
+            if (days > 0) result += `${days} ${days > 1 ? 'days' : 'day'} `;
+            if (hours > 0) result += `and ${hours} ${hours > 1 ? 'hours' : 'hour'}. `;
+            result += `You are ${type}${avg} minutes per day.`;
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.style.display = 'block';
+            outputDiv.innerHTML = result;
+        }
+    </script>
+</body>
+</html>
