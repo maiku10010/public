@@ -5,44 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify Listening Stats</title>
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #d0f0c0, #98fb98);
+            color: #2f4f4f;
         }
+
         .container {
             max-width: 600px;
-            margin: auto;
+            margin: 50px auto;
             padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #f0fff0;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
+
         h1 {
             text-align: center;
+            color: #006400;
+            font-size: 2.2em;
         }
+
+        p {
+            text-align: center;
+            color: #2e8b57;
+            font-size: 1.2em;
+        }
+
         label {
+            display: block;
+            margin-top: 15px;
             font-weight: bold;
+            font-size: 1em;
+            color: #006400;
         }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 1em;
+            border: 2px solid #32cd32;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input[type="number"]:focus {
+            border-color: #006400;
+            box-shadow: 0 0 8px #90ee90;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #32cd32;
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #006400;
+            box-shadow: 0 4px 12px rgba(0, 128, 0, 0.4);
+        }
+
         .result {
             margin-top: 20px;
             padding: 15px;
-            background-color: #e7f4e4;
-            border-left: 5px solid #4caf50;
+            background-color: #e0ffe0;
+            border-left: 5px solid #32cd32;
+            border-radius: 5px;
+            font-size: 1.1em;
+            color: #2f4f4f;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #006400;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Spotify Listening Stats</h1>
-        <p>Enter the total minutes you've listened to Spotify this year to see your listening stats!</p>
+        <p>Enter your total Spotify listening minutes this year to discover your stats!</p>
         <label for="minutes">Your Minutes:</label>
-        <input type="number" id="minutes" placeholder="Enter your minutes..." />
+        <input type="number" id="minutes" placeholder="e.g., 25000" />
         <button onclick="calculateStats()">Submit</button>
 
         <div id="output" class="result" style="display: none;"></div>
     </div>
+
+    <footer>
+        Made with 💚 for music lovers
+    </footer>
 
     <script>
         function calculateStats() {
@@ -81,3 +147,4 @@
     </script>
 </body>
 </html>
+
